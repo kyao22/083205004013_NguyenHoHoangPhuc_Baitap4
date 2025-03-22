@@ -112,20 +112,6 @@ data class Reminder(
     val type: String
 )
 
-@Preview(showBackground = true)
-@Composable
-fun AppNavigation() {
-    val navController = rememberNavController()
-    val viewModel = TaskViewModel()
-
-    NavHost(navController = navController, startDestination = "TaskScreen") {
-        composable("TaskScreen") { TaskScreen(viewModel, navController) }
-        composable("Detail") {
-            val task = viewModel.selectedtask ?: return@composable
-            DetailTask(navController, task) }
-    }
-}
-
 class TaskViewModel : ViewModel() {
     private val client = HttpClient(Android) {
         install(ContentNegotiation) {
@@ -403,7 +389,6 @@ fun DetailTask(navController: NavHostController, task: Task){
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(40.dp, 40.dp)
                     .clickable{
-                        navController.navigate("TaskScreen")
                     }
                 )
 
@@ -586,7 +571,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                AppNavigation()
             }
         }
     }
