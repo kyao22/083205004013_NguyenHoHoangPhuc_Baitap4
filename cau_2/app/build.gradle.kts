@@ -43,6 +43,7 @@ android {
 
 dependencies {
 
+    implementation ("androidx.compose.material:material-icons-extended:1.7.8")
     implementation ("io.ktor:ktor-client-core:2.3.7")
     implementation ("io.ktor:ktor-client-android:2.3.7")
     implementation ("io.ktor:ktor-client-content-negotiation:2.3.7")
